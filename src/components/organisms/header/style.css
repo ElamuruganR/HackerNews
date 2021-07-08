@@ -1,0 +1,15 @@
+.header{
+    padding: 2px;
+}
+.logo {
+    width: 18px;
+    padding-right: 4px;
+}
+.headernav {
+    line-height: 12pt;
+    height: 10px;
+}
+.login {
+    text-align: right;
+    padding-right: 4px;
+}
