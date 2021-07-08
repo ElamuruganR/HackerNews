@@ -14,7 +14,7 @@ export function useAxios(category, name, initialState) {
   
     useEffect(async()=>{
       await Axios.get(`https://hacker-news.firebaseio.com/v0/${endpoint}.json`)
-                 .then(res => {setData(res.data); console.log("Hooks Response:", res.data)})
+                 .then(res => {setData(res.data); console.log("Custom Hooks Response:", res.data)})
                  .catch(err => console.log(err.message))
     },[])
     return [data];
