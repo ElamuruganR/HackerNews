@@ -35,7 +35,7 @@ export default function Item(props) {
                 <td align="right" valign="top" className="title"><span className="rank">{props.sno+1}.</span></td>
                 <td valign="top" className="votelinks">
                     <center>
-                        <Anchor id="up_27760931" url="vote?id=27760931&amp;how=up&amp;goto=newest">
+                        <Anchor id="up_27760931" url={`vote?id=${props.id}&amp;how=up&amp;goto=new`}>
                             <div className="votearrow" title="upvote" ></div>
                         </Anchor>
                     </center>
@@ -61,22 +61,22 @@ export default function Item(props) {
             <tr>
                 <td colSpan="2"></td>
                 <td className="subtext">
-                    <span className="score" id="score_27760931">{data?.score} point</span>
+                    <span className="score" id={`score_${props.id}`}>{data?.score} point</span>
                     &nbsp;by&nbsp;_
                     <Anchor url="user?id=amrrs" className="hnuser">{data?.by}</Anchor>
                     &nbsp;
-                    <span className="age" title="2021-07-07T13:34:10">
-                        <Anchor url="item?id=27760931">
+                    <span className="age" title={`${new Date(data?.time*1000)}`}>
+                        <Anchor url={`item?id=${props.id}`}>
                             {getTime(data?.time)}
                         </Anchor>
                     </span>
-                    <span id="unv_27760931"></span>
+                    <span id={`unv_${props.id}`}></span>
                     &nbsp;|&nbsp;
-                    <Anchor url="hide?id=27760931&amp;goto=newest">hide</Anchor>
+                    <Anchor url={`hide?id=${props.id}&amp;goto=new`}>hide</Anchor>
                     &nbsp;|&nbsp;
                     <Anchor url={data?.url} className="hnpast">past</Anchor>
                     &nbsp;|&nbsp;
-                    <Anchor url="item?id=27760931">discuss</Anchor>
+                    <Anchor url={`item?id=${props.id}`}>discuss</Anchor>
                 </td>
             </tr>
             <tr className="spacer"></tr>

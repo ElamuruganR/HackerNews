@@ -1,6 +1,9 @@
 import './headernav.css';
-import {Link, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import Anchor from '../../atoms/anchor/Anchor';
+
+export const NavTexts = ["new", "top", "best", "ask", "show", "jobs"] ;
+    
 
 export default function HeaderNav(){
     const location = useLocation();
@@ -12,29 +15,27 @@ export default function HeaderNav(){
                 <b className="hnname">
                     <Anchor url="news">Hacker News </Anchor>
                 </b>
-                <Tab url="newest" text="new" active={getStatus('newest')}/>
-                <Tab url="top" text="top" active={getStatus('top')} />
-                <Tab url="best" text="best" active={getStatus('best')} />
-                <Tab url="ask" text="ask" active={getStatus('ask')} />
-                <Tab url="show" text="show" active={getStatus('show')} />
-                <Tab url="jobs" text="jobs" active={getStatus('jobs')} />
+                {NavTexts.map(navText => {
+                    return (
+                        <Tab url={navText} text={navText} active={getStatus({navText})}/>
+                    )
+                })}
             </span>
     )
 }
-export function Tab({active, url, text}) {
+export function Tab({active, url, text, seperation}) {
+    const anchorWthSpace = (<>
+                                <Anchor url={url}>{text}</Anchor>
+                                &nbsp;|&nbsp;
+                            </>);
+                
     if (active) {
         return (
             <span className="topsel">
-                <Anchor url={url}>{text}</Anchor>&nbsp;
-                |&nbsp;
+                {anchorWthSpace}
             </span>
         )
     } else {
-        return(
-            <>
-                <Anchor url={url}>{text}</Anchor>&nbsp;
-                |&nbsp;
-            </>
-        )
+        return anchorWthSpace;
     }
 }

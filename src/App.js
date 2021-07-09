@@ -18,7 +18,7 @@ function App() {
                 <Switch>
                   <Route path="/" exact><Pages.News /></Route>
                   <Route path="/news" exact><Pages.News /></Route>
-                  <Route path="/newest" exact><Pages.New /></Route>
+                  <Route path="/new" exact><Pages.New /></Route>
                   <Route path="/top" exact><Pages.Top /></Route>
                   <Route path="/best" exact><Pages.Best /></Route>
                   <Route path="/ask" exact><Pages.Ask /></Route>
