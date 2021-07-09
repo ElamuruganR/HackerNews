@@ -9,23 +9,23 @@ export default function Item(props) {
         return url?.replace('http://www.', '').replace('http://').replace('https://www.').replace('https://').split('/')[0];
     }
 
+    const division = num => den => Math.floor(num/den);
+
     const getTime = (ms) => {
+
         let now = new Date();
         let actualDate = new Date(ms*1000);
         let diffTime = now.getTime()-actualDate.getTime();
-        let secs = Math.floor(diffTime/1000);
-        let mins = Math.floor(secs/60);
-        let days = Math.floor(mins/24);
-        let years = Math.floor(days/365);
-        if(years){
-            return years+' years ago';
-        } else if(days) {
-            return days+' days ago';
-        } else if(mins) {
-            return mins+' mins ago';
-        } else {
-            return secs+' seconds ago';
-        }
+        let secs = division(diffTime)(1000);
+        let mins = division(secs)(60);
+        let days = division(mins)(24);
+        let years = division(days)(365);
+
+        return (
+            years ? years+' years ago' :
+                days ? days+' days ago' :
+                    mins ? mins+' mins ago' : secs+' seconds ago'
+        )
     }
 
     
