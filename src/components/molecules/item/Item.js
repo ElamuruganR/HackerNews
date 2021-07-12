@@ -3,7 +3,7 @@ import Anchor from '../../atoms/anchor/Anchor';
 import { useAxios } from '../../customhooks/UseAxios';
 
 export default function Item(props) {
-    const [data] = useAxios('item', props.id, {});
+    const [data] = useAxios({}, `item/${props.id}.json`);
 
     const getSite = (url) => {
         return url?.replace('http://www.', '').replace('http://').replace('https://www.').replace('https://').split('/')[0];

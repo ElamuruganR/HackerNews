@@ -3,7 +3,7 @@ import ItemList from '../itemlist/ItemList';
 import { useAxios } from '../../customhooks/UseAxios';
 
 export function Page({name}) {
-  const [data] = useAxios('story', name, []);
+  const [data] = useAxios([], `${name}stories.json`);
   const max = 30;
     
   return(
